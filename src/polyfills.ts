@@ -37,10 +37,12 @@
 /** IE10 and IE11 requires the following for NgClass support on SVG elements */
 // import 'classlist.js';  // Run `npm install --save classlist.js`.
 
+// Load Custom Elements es5 adapter
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
+
 /** Evergreen browsers require these. **/
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
-
 
 /**
  * Required to support Web Animations `@angular/animation`.
@@ -48,14 +50,13 @@ import 'core-js/es7/reflect';
  **/
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
-
+// Load Custom Elements + Shadow DOM V1 Polyfills
+import '@webcomponents/webcomponentsjs/webcomponents-sd-ce.js';
 
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
-
-
+import 'zone.js/dist/zone'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS
