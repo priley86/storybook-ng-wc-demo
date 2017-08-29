@@ -4,27 +4,32 @@ interface NodeModule {
   id: string;
 }
 
+declare module '*.css' {
+  const _: string;
+  export default _;
+}
+
+declare module 'snarkdown' {
+  export default function parse(md: string): string;
+}
+
+declare module '@webcomponents/template';
+declare module '@webcomponents/webcomponents-platform';
+declare module '@webcomponents/webcomponentsjs/webcomponents-sd-ce';
+declare module '@webcomponents/webcomponentsjs/custom-elements-es5-adapter';
+
+// webcomponents polyfill
+
 interface Window {
-  ShadyCSS: ShadyCSS.ShadyCssStatic;
+  WebComponents: any;
+  ShadyDOM: any;
+  ShadyCSS: any;
+  Promise: typeof Promise;
 }
 
-declare module '*.css';
-
-declare namespace ShadyCSS {
-  interface IntrinsicElements {
-    'custom-style': HTMLElement;
-  }
-
-  interface ShadyCssStatic {
-    prepareTemplate(
-      template: HTMLTemplateElement,
-      elementName: string,
-      typeExtension?: string
-    );
-    applyStyle(
-      host: HTMLElement,
-      overrideProps?: { [propName: string]: string }
-    );
-    updateStyles(properties?: { [propName: string]: string });
-  }
+interface CustomElementRegistry {
+  forcePolyfill: any;
 }
+
+// declare const require: (name: string) => any;
+// declare const process: any;

@@ -1,5 +1,6 @@
 import { h, Component, props } from 'skatejs';
-import { prop } from '../skate-decorators';
+import { scopeCss } from '../../../@skatejs/grip-tape';
+import styles from './pf-hello.css';
 
 type Props = {
   name?: string;
@@ -16,14 +17,16 @@ class HelloWebComponent extends Component<Props> {
     };
   }
 
+  css = scopeCss(this, styles);
+
   connectedCallback() {
     super.connectedCallback();
   }
 
-  renderCallback() {
-    const { name } = this.props;
+  renderCallback({ name }: Props) {
     return (
       <div>
+        <style>{this.css}</style>
         Hello, <b>{name}</b>
       </div>
     );

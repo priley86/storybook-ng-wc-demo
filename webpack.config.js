@@ -87,16 +87,6 @@ module.exports = {
         ]
       },
       {
-        exclude: [path.join(process.cwd(), 'src/styles.css')],
-        test: /\.styl$/,
-        loaders: [
-          'exports-loader?module.exports.toString()',
-          'css-loader?{"sourceMap":false,"importLoaders":1}',
-          'postcss-loader',
-          'stylus-loader?{"sourceMap":false,"paths":[]}'
-        ]
-      },
-      {
         include: [path.join(process.cwd(), 'src/styles.css')],
         test: /\.css$/,
         loaders: ExtractTextPlugin.extract({
@@ -135,22 +125,9 @@ module.exports = {
         })
       },
       {
-        include: [path.join(process.cwd(), 'src/styles.css')],
-        test: /\.styl$/,
-        loaders: ExtractTextPlugin.extract({
-          use: [
-            'css-loader?{"sourceMap":false,"importLoaders":1}',
-            'postcss-loader',
-            'stylus-loader?{"sourceMap":false,"paths":[]}'
-          ],
-          fallback: 'style-loader',
-          publicPath: ''
-        })
-      },
-      {
         test: /\.tsx?$/,
         loader: '@ngtools/webpack'
-        // "loader": "awesome-typescript-loader"
+        // loader: 'awesome-typescript-loader'
       }
     ]
   },
